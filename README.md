@@ -1,4 +1,4 @@
-Odin Library
+# Odin Library
 
 This repository is home to the Library Project in the Odin Project Javascript Course
 
