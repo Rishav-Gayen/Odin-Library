@@ -7,3 +7,5 @@ This repository is home to the Library Project in the Odin Project Javascript Co
 HTML, CSS and JS
 
 # Link
+
+https://rishav-gayen.github.io/Odin-Library/
