@@ -126,7 +126,7 @@ bookForm.addEventListener('submit', (e) => {
 
     bookTitle.textContent = newBook.name;
     bookAuthor.textContent = newBook.author;
-    bookPages.textContent = newBook.pages;
+    bookPages.textContent = newBook.pages + ' Pages';
     removeBook.textContent = 'Remove Book';
 
     const toggleRead = () => {
