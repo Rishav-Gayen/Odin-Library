@@ -36,6 +36,11 @@ body {
     outline: none;
     border-radius: 8px;
     font-weight: bold;
+    cursor:pointer;
+}
+
+.header-add-book:hover {
+  background-color:#d3d3d3;
 }
 
 /* Modal styling */
@@ -106,7 +111,7 @@ input {
     cursor: pointer;
 }
   
-  button:hover {
+.submit-button:hover {
     background-color: #45a049;
 }
 
@@ -115,6 +120,59 @@ input {
     justify-content: center;
     gap: 30px;
 }
+
+.books {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  margin-top: 40px;
+  gap: 40px; 
+  padding: 20px 10px;
+}
+
+.book-card {
+  box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.1);
+  flex: 0.1;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 19px;
+  gap: 20px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.book-title, .book-author, .book-pages {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+
+.book-read,.book-remove {
+  cursor: pointer;
+}
+
+.book-read {
+  background-color: lightgreen;
+  padding: 14px 24px;
+  font-size: 18px;
+  border:none;
+  outline: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.book-remove {
+  padding: 14px 24px;
+  font-size: 18px;
+  border:none;
+  outline: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.not {
+  background-color: #ff8383;
+}
+
 
 @media screen and (min-width: 768px) {
     .header {
