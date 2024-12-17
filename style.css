@@ -145,6 +145,12 @@ input {
   font-size: 20px;
 }
 
+.book-title {
+  font-size: 24px;
+  font-weight: 600;
+  font-style: italic;
+}
+
 
 .book-read,.book-remove {
   cursor: pointer;
