@@ -8,6 +8,8 @@ const read = document.querySelector('#read');
 const bookForm = document.querySelector('#modalForm');
 const bookGrid = document.querySelector('.books');
 
+
+
 function storeElement() {
   // Remove already Existing Items
   localStorage.removeItem('storedElement');
@@ -27,29 +29,37 @@ function loadElement() {
   }
 }
 
+function removeEventListeners(element, event, handler) {
+  element.removeEventListener(event, handler);
+}
+
 function reattachEventListeners() {
   const readBookButtons = document.querySelectorAll('.book-read');
   const removeBookButtons = document.querySelectorAll('.book-remove')
 
+
   readBookButtons.forEach(button => {
-    button.addEventListener('click', () => {
+
+    const toggleRead = () => {
       button.classList.toggle('not');
-      if(button.textContent == 'Read') {
-        button.textContent = 'Not read';
-      } else {
-        button.textContent = 'Read';
-      }
-      storeElement();
-    });
+      button.textContent = button.textContent === 'Read' ? 'Not read' : 'Read';
+      storeElement(); // Store the updated state immediately
+    };
+
+    removeEventListeners(button, 'click', toggleRead)
+    button.addEventListener('click', toggleRead);
   });
 
   removeBookButtons.forEach(button => {
-    button.addEventListener('click', (e) => {
+    const removeBookHandler = (e) => {
       const bookName = e.target.parentElement.querySelector('.book-title').textContent;
       e.target.parentElement.remove();
       Lib.removeBook(bookName);
       storeElement();
-    });
+    };
+
+    removeEventListeners(button, 'click', removeBookHandler);
+    button.addEventListener('click', removeBookHandler);
   });
 
 }
@@ -119,22 +129,27 @@ bookForm.addEventListener('submit', (e) => {
     bookPages.textContent = newBook.pages;
     removeBook.textContent = 'Remove Book';
 
-    readBook.addEventListener('click', () => {
+    const toggleRead = () => {
       readBook.classList.toggle('not');
       readBook.textContent = readBook.textContent === 'Read' ? 'Not read' : 'Read';
+      storeElement(); // Store the updated state immediately
+    };
+
+    const removeBookHandler = (e) => {
+      const bookName = bookCard.querySelector('.book-title').textContent;
+      bookCard.remove();
+      Lib.removeBook(bookName);
       storeElement();
-    });
+    };
+
+    readBook.addEventListener('click', toggleRead);
 
     readBook.textContent = newBook.read ? 'Read' : 'Not Read';
     if (!newBook.read) {
       readBook.classList.add('not');
     }
 
-    removeBook.addEventListener('click', (e) => {
-      e.target.parentElement.remove();
-      storeElement();
-      Lib.removeBook(newBook.name);
-    })
+    removeBook.addEventListener('click', removeBookHandler);
 
     readBook.textContent = newBook.read ? 'Read' : 'Not Read';
     if (!newBook.read) {
