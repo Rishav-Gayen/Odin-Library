@@ -39,8 +39,8 @@ function reattachEventListeners() {
       } else {
         button.textContent = 'Read';
       }
+      storeElement();
     });
-    storeElement();
   });
 
   removeBookButtons.forEach(button => {
